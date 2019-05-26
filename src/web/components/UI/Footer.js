@@ -8,9 +8,7 @@ const Footer = () => (
         <p>
           Learn More on the
           {' '}
-          <a target="_blank" rel="noopener noreferrer" href="https://github.com/mcnamee/react-native-starter-kit">
-            Github Repo
-          </a>
+
           {' '}
           &nbsp; | &nbsp; Written and Maintained by
           {' '}

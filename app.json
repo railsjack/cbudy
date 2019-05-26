@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "React Native Starter Kit",
-    "description": "This is a boilerplate that launches with a React web app and React Native mobile app. It shares a single code base! The 'business logic' (i.e. actions, containers, reducers) is shared across both platforms, whilst allowing flexibility in View components to ensure your project looks and feels native in each platform. - https://github.com/mcnamee/react-native-starter-kit",
-    "slug": "react-native-starter-kit",
+    "name": "CBudyApp",
+    "description": "This is an app for CBudy",
+    "slug": "cbudy-app",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -14,8 +14,13 @@
     "icon": "./src/images/app-icon.png",
     "splash": {
       "image": "./src/images/launch.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#473be7"
+      "mdpi": "./src/images/launch.png",
+      "hdpi": "./src/images/launch.png",
+      "xhdpi": "./src/images/launch.png",
+      "xxhdpi": "./src/images/launch.png",
+      "xxxhdpi": "./src/images/launch.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#0cb464"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -24,7 +29,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.home.jinnahrae"
+    },
+    "android": {
+      "package": "com.home.jinnahrae"
     }
   }
 }
