@@ -16,7 +16,6 @@ export default function userReducer(state = {}, action) {
         return {
           ...state,
           firstName: action.data.firstName,
-          lastName: action.data.lastName,
           signedUp: action.data.signedUp,
           role: action.data.role,
         };

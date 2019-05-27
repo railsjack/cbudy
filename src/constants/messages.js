@@ -13,7 +13,7 @@ export const errorMessages = {
 
   // Member
   memberExists: 'Member already exists',
-  missingFirstName: 'First name is missing',
+  missingFirstName: 'Display name is missing',
   missingLastName: 'Last name is missing',
   missingEmail: 'Email is missing',
   missingPassword: 'Password is missing',

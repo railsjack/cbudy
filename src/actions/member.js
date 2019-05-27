@@ -6,13 +6,12 @@ import { Firebase, FirebaseRef } from '../lib/firebase';
   */
 export function signUp(formData) {
   const {
-    email, password, password2, firstName, lastName,
+    email, password, password2, firstName,
   } = formData;
 
   return () => new Promise(async (resolve, reject) => {
     // Validation rules
     if (!firstName) return reject({ message: errorMessages.missingFirstName });
-    if (!lastName) return reject({ message: errorMessages.missingLastName });
     if (!email) return reject({ message: errorMessages.missingEmail });
     if (!password) return reject({ message: errorMessages.missingPassword });
     if (!password2) return reject({ message: errorMessages.missingPassword });
@@ -25,7 +24,6 @@ export function signUp(formData) {
         if (res && res.user.uid) {
           FirebaseRef.child(`users/${res.user.uid}`).set({
             firstName,
-            lastName,
             signedUp: Firebase.database.ServerValue.TIMESTAMP,
             lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
           }).then(resolve);

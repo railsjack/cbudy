@@ -9,13 +9,13 @@ class SignUp extends Component {
     Layout: PropTypes.func.isRequired,
     member: PropTypes.shape({}).isRequired,
     onFormSubmit: PropTypes.func.isRequired,
-  }
+  };
 
   state = {
     error: null,
     success: null,
     loading: false,
-  }
+  };
 
   onFormSubmit = (data) => {
     const { onFormSubmit } = this.props;
@@ -27,7 +27,8 @@ class SignUp extends Component {
         loading: false,
         success: 'Success - You are now a member',
         error: null,
-      })).catch((err) => {
+      }))
+      .catch((err) => {
         this.setState({
           loading: false,
           success: null,
@@ -35,7 +36,7 @@ class SignUp extends Component {
         });
         throw err; // To prevent transition back
       });
-  }
+  };
 
   render = () => {
     const { member, Layout } = this.props;
@@ -50,7 +51,7 @@ class SignUp extends Component {
         onFormSubmit={this.onFormSubmit}
       />
     );
-  }
+  };
 }
 
 const mapStateToProps = state => ({

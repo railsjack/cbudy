@@ -1,5 +1,5 @@
 import React from 'react';
-import { Scene, Tabs, Stack } from 'react-native-router-flux';
+import { Scene, Stack, Tabs } from 'react-native-router-flux';
 import { Icon } from 'native-base';
 
 import DefaultProps from '../constants/navigation';
@@ -26,9 +26,27 @@ import ProfileComponent from '../components/User/Profile';
 
 import AboutComponent from '../components/About';
 
+import WelcomeComponent from '../components/Welcome';
+
 const Index = (
   <Stack hideNavBar>
     <Scene hideNavBar>
+      <Stack
+        key="welcome"
+        title={AppConfig.appName.toUpperCase()}
+        icon={() => <Icon name="planet" {...DefaultProps.icons} />}
+        {...DefaultProps.navbarProps}
+      >
+        <Scene hideNavBar key="home" component={WelcomeComponent}/>
+        <Scene
+          hideNavBar
+          key="signUp"
+          title="SIGN UP"
+          {...DefaultProps.navbarProps}
+          component={SignUpContainer}
+          Layout={SignUpComponent}
+        />
+      </Stack>
       <Tabs
         key="tabbar"
         swipeEnabled
@@ -42,16 +60,15 @@ const Index = (
           icon={() => <Icon name="planet" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="home" component={AboutComponent} />
+          <Scene key="home" component={AboutComponent}/>
         </Stack>
-
         <Stack
           key="recipes"
           title="RECIPES"
           icon={() => <Icon name="book" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="recipes" component={RecipesContainer} Layout={RecipeListingComponent} />
+          <Scene key="recipes" component={RecipesContainer} Layout={RecipeListingComponent}/>
         </Stack>
 
         <Stack
@@ -60,15 +77,7 @@ const Index = (
           icon={() => <Icon name="contact" {...DefaultProps.icons} />}
           {...DefaultProps.navbarProps}
         >
-          <Scene key="profileHome" component={MemberContainer} Layout={ProfileComponent} />
-          <Scene
-            back
-            key="signUp"
-            title="SIGN UP"
-            {...DefaultProps.navbarProps}
-            component={SignUpContainer}
-            Layout={SignUpComponent}
-          />
+          <Scene key="profileHome" component={MemberContainer} Layout={ProfileComponent}/>
           <Scene
             back
             key="login"

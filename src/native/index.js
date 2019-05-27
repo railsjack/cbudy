@@ -14,7 +14,7 @@ import Routes from './routes/index';
 import Loading from './components/UI/Loading';
 
 // Hide StatusBar on Android as it overlaps tabs.
-if (Platform.OS === 'android') StatusBar.setHidden(false);
+if (Platform.OS === 'android') StatusBar.setHidden(true);
 
 export default class App extends React.Component {
   static propTypes = {
