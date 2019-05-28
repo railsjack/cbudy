@@ -27,6 +27,8 @@ export function signUp(formData) {
             signedUp: Firebase.database.ServerValue.TIMESTAMP,
             lastLoggedIn: Firebase.database.ServerValue.TIMESTAMP,
           }).then(resolve);
+          Firebase.auth().currentUser.sendEmailVerification()
+            .catch(() => console.log('Verification email failed to send'));
         }
       }).catch(reject);
   }).catch((err) => { throw err.message; });
@@ -95,8 +97,7 @@ export function login(formData) {
 
             // Send verification Email when email hasn't been verified
             if (userDetails.emailVerified === false) {
-              Firebase.auth().currentUser.sendEmailVerification()
-                .catch(() => console.log('Verification email failed to send'));
+              return reject({ message: errorMessages.notVerifiedEmail });
             }
 
             // Get User Data from DB (different to auth user data)

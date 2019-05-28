@@ -29,10 +29,10 @@
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.home.jinnahrae"
+      "bundleIdentifier": "com.cbudy"
     },
     "android": {
-      "package": "com.home.jinnahrae",
+      "package": "com.cbudy",
       "googleServicesFile": "./google-services.json"
     }
   }

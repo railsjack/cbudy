@@ -1,0 +1,9 @@
+export default {
+  apiKey: 'AIzaSyDsMyQ2Qql54Ew8bgLaco7EdV9rojuD62c',
+  authDomain: 'cbudyapp.firebaseio.com',
+  databaseURL: 'https://cbudyapp.firebaseio.com',
+  projectId: 'cbudyapp',
+  storageBucket: 'cbudyapp.appspot.com',
+  messagingSenderId: '1099505628967',
+};
+

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1099505628967",
+    "firebase_url": "https://cbudyapp.firebaseio.com",
+    "project_id": "cbudyapp",
+    "storage_bucket": "cbudyapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1099505628967:android:5d087318debcd29e",
+        "android_client_info": {
+          "package_name": "com.cbudy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1099505628967-3llseta5fujd70oon60elh50g359983e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsMyQ2Qql54Ew8bgLaco7EdV9rojuD62c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1099505628967-3llseta5fujd70oon60elh50g359983e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
