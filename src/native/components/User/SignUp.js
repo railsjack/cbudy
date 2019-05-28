@@ -1,22 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Header, Icon, Input, Item, Left, Right, Text, Title, View } from 'native-base';
-import { ImageBackground } from 'react-native';
+import { Image, ImageBackground } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Messages from '../UI/Messages';
-import Spacer from '../UI/Spacer';
 import Colors from '../../../../native-base-theme/variables/commonColor';
+import Terms from '../../components/UI/Terms';
 
-const welcomeScreenBg = require('../../../images/welcome.png');
+const welcomeScreenBg = require('../../../images/main-bg.png');
+const logoImage = require('../../../images/logo.png');
+
 const styles = {
   input_item: {
     backgroundColor: 'white',
-    height: 32,
+    height: 31,
     paddingLeft: 10,
-    marginTop: 10
+    marginTop: 12,
   },
   input: {
-    fontSize: 14
+    fontSize: 14,
   },
 };
 
@@ -67,33 +69,55 @@ class SignUp extends React.Component {
     return (
       <ImageBackground
         style={{
-          flex: 1,
-          width: null,
-          height: null,
-          resizeMode: 'cover',
-          marginTop: -20,
-          flexDirection: 'column',
-          justifyContent: 'space-between',
+          height: '100%',
         }}
         source={welcomeScreenBg}
       >
-        <Header transparent>
+        <Header
+          style={{
+            backgroundColor: 'transparent',
+            elevation: 0,
+            shadow: 0,
+          }}
+        >
           <Left>
             <Button transparent onPress={() => Actions.pop()}>
-              <Icon style={{fontSize: 14}} name="ios-arrow-back"/>
-              <Title style={{fontSize: 14}}> Back</Title>
+              <Icon style={{ fontSize: Colors.fontSizeH3 }} name="ios-arrow-back"/>
+              <Title style={{ fontSize: Colors.fontSizeBase }} uppercase={false}> Back</Title>
             </Button>
           </Left>
           <Right/>
         </Header>
 
         <View style={{
-          width: '85%',
+          flex: 1,
+          resizeMode: 'cover',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          width: '80%',
+          height: '100%',
           alignSelf: 'center',
-          marginBottom: 20,
         }}>
-          {error && <Messages message={error}/>}
-          {success && <Messages type="success" message={success}/>}
+          <Image
+            style={{
+              alignSelf: 'center',
+              resizeMode: 'stretch',
+              width: 200,
+              height: 200 * 1.188,
+            }}
+            source={logoImage}/>
+
+          {error && <Messages style={{height: 30}} message={error}/>}
+          {success && <Messages style={{height: 30}} type="success" message={success}/>}
+
+          {(!error && !success) &&
+          <Item style={{
+            height: 30,
+            borderBottomWidth: 0,
+            backgroundColor: 'transparent',
+          }}/>
+          }
+
 
           <Item rounded={true} style={styles.input_item}>
             <Input
@@ -135,7 +159,10 @@ class SignUp extends React.Component {
             />
           </Item>
 
-          <Spacer size={20}/>
+          <Item style={{
+            borderBottomWidth: 0,
+            height: 10,
+          }}/>
 
           <Button
             style={[styles.input_item, { backgroundColor: Colors.brandSuccessLight }]}
@@ -143,36 +170,12 @@ class SignUp extends React.Component {
             <Text uppercase={false}>{loading ? 'Loading' : 'Sign Up'}</Text>
           </Button>
 
-          <Text
-            style={{
-              width: '100%',
-              alignSelf: 'center',
-              color: 'white',
-              textAlign: 'center',
-              lineHeight: 23,
-              marginTop: 20,
-            }}
-          >
-            By creating an account or logging in, you agree to our
-            {' '}
-            <Text
-              style={{
-                color: 'white',
-                textDecorationLine: 'underline',
-              }}
-              onPress={() => alert('Terms')}
-            >Terms</Text>
-            {' '}
-            and
-            {' '}
-            <Text
-              style={{
-                color: 'white',
-                textDecorationLine: 'underline',
-              }}
-              onPress={() => alert('Policy')}
-            >Privacy Policy</Text>
-          </Text>
+          <Item style={{
+            borderBottomWidth: 0,
+            height: 10,
+          }}/>
+
+          <Terms style={{ marginBottom: 40 }}/>
         </View>
       </ImageBackground>
     );

@@ -28,7 +28,7 @@ import AboutComponent from '../components/About';
 
 import WelcomeComponent from '../components/Welcome';
 
-const Index = (
+const Routes = (
   <Stack hideNavBar>
     <Scene hideNavBar>
       <Stack
@@ -45,6 +45,23 @@ const Index = (
           {...DefaultProps.navbarProps}
           component={SignUpContainer}
           Layout={SignUpComponent}
+        />
+        <Scene
+          hideNavBar
+          key="login"
+          title="LOGIN"
+          {...DefaultProps.navbarProps}
+          component={LoginContainer}
+          Layout={LoginComponent}
+        />
+        <Scene
+          initial={false}
+          hideNavBar
+          key="forgotPassword"
+          title="FORGOT PASSWORD"
+          {...DefaultProps.navbarProps}
+          component={ForgotPasswordContainer}
+          Layout={ForgotPasswordComponent}
         />
       </Stack>
       <Tabs
@@ -118,4 +135,4 @@ const Index = (
   </Stack>
 );
 
-export default Index;
+export default Routes;

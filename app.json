@@ -32,7 +32,8 @@
       "bundleIdentifier": "com.home.jinnahrae"
     },
     "android": {
-      "package": "com.home.jinnahrae"
+      "package": "com.home.jinnahrae",
+      "googleServicesFile": "./google-services.json"
     }
   }
 }

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "693014485427",
+    "firebase_url": "https://cbudy-firebase.firebaseio.com",
+    "project_id": "cbudy-firebase",
+    "storage_bucket": "cbudy-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693014485427:android:760b9fcf26c8f6d9",
+        "android_client_info": {
+          "package_name": "com.home.jinnahrae"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693014485427-550hghh63c7nai54d804i0bu5in2jm1n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD28G7kjyMNtVvFrzc7KIlVJDpCVCnC3UM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693014485427-550hghh63c7nai54d804i0bu5in2jm1n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

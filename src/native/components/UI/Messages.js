@@ -5,14 +5,13 @@ import { Text } from 'native-base';
 
 import Colors from '../../../../native-base-theme/variables/commonColor';
 
-const Messages = ({ message, type }) => (
-  <View style={{
+const Messages = ({ style, message, type }) => (
+  <View style={[{
     backgroundColor: (type === 'error') ? Colors.brandDanger : (type === 'success') ? Colors.brandSuccess : Colors.brandInfo,
-    paddingVertical: 10,
     paddingHorizontal: 5,
-  }}
+  }, style]}
   >
-    <Text style={{ color: '#fff', textAlign: 'center' }}>
+    <Text style={{ color: '#fff', textAlign: 'center', lineHeight: style ? style.height : null, }}>
       {message}
     </Text>
   </View>
@@ -21,11 +20,13 @@ const Messages = ({ message, type }) => (
 Messages.propTypes = {
   message: PropTypes.string,
   type: PropTypes.oneOf(['error', 'success', 'info']),
+  style: PropTypes.any,
 };
 
 Messages.defaultProps = {
   message: 'An unexpected error came up',
   type: 'error',
+  style: null,
 };
 
 export default Messages;

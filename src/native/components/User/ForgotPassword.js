@@ -1,12 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Container, Content, Text, Form, Item, Label, Input, Button,
-} from 'native-base';
+import { Button, Header, Icon, Input, Item, Left, Right, Text, Title, View } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import Messages from '../UI/Messages';
-import Header from '../UI/Header';
-import Spacer from '../UI/Spacer';
+import Colors from '../../../../native-base-theme/variables/commonColor';
+import { Image, ImageBackground } from 'react-native';
+import Terms from '../../components/UI/Terms';
+
+
+const welcomeScreenBg = require('../../../images/main-bg.png');
+const logoImage = require('../../../images/lock.png');
+
+
+const styles = {
+  input_item: {
+    backgroundColor: 'white',
+    height: 31,
+    paddingLeft: 10,
+    marginTop: 12,
+  },
+  input: {
+    fontSize: 14,
+  },
+};
 
 class ForgotPassword extends React.Component {
   static propTypes = {
@@ -17,13 +33,13 @@ class ForgotPassword extends React.Component {
     success: PropTypes.string,
     loading: PropTypes.bool.isRequired,
     onFormSubmit: PropTypes.func.isRequired,
-  }
+  };
 
   static defaultProps = {
     success: null,
     error: null,
     member: {},
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -35,51 +51,119 @@ class ForgotPassword extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = (name, val) => this.setState({ [name]: val })
+  handleChange = (name, val) => this.setState({ [name]: val });
 
   handleSubmit = () => {
     const { onFormSubmit } = this.props;
 
     return onFormSubmit(this.state)
-      .then(() => setTimeout(() => { Actions.pop(); Actions.login(); }, 1000))
-      .catch(() => {});
-  }
+      .then(() => setTimeout(() => {
+        Actions.pop();
+        Actions.login();
+      }, 1000))
+      .catch(() => {
+      });
+  };
 
   render() {
     const { loading, error, success } = this.props;
     const { email } = this.state;
 
     return (
-      <Container>
-        <Content padder>
-          <Header
-            title="Reset your Password"
-            content="No stress, no stress. We'll get you back into your account."
-          />
-
-          {error && <Messages message={error} />}
-          {success && <Messages type="success" message={success} />}
-
-          <Form>
-            <Item stackedLabel>
-              <Label>Email</Label>
-              <Input
-                autoCapitalize="none"
-                value={email}
-                disabled={loading}
-                keyboardType="email-address"
-                onChangeText={v => this.handleChange('email', v)}
-              />
-            </Item>
-
-            <Spacer size={20} />
-
-            <Button block onPress={this.handleSubmit} disabled={loading}>
-              <Text>{loading ? 'Loading' : 'Reset Password'}</Text>
+      <ImageBackground
+        style={{
+          height: '100%',
+        }}
+        source={welcomeScreenBg}
+      >
+        <Header
+          style={{
+            backgroundColor: 'transparent',
+            elevation: 0,
+            shadow: 0,
+          }}
+        >
+          <Left>
+            <Button transparent onPress={() => Actions.pop()}>
+              <Icon style={{ fontSize: Colors.fontSizeH3 }} name="ios-arrow-back"/>
+              <Title style={{ fontSize: Colors.fontSizeBase }} uppercase={false}> Back</Title>
             </Button>
-          </Form>
-        </Content>
-      </Container>
+          </Left>
+          <Right/>
+        </Header>
+
+        <View style={{
+          flex: 1,
+          resizeMode: 'cover',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          width: '80%',
+          height: '100%',
+          alignSelf: 'center',
+        }}>
+          <Image
+            style={{
+              alignSelf: 'center',
+              resizeMode: 'stretch',
+              width: 100,
+              height: 100 * 1.388888888888889,
+              marginTop: 100,
+            }}
+            source={logoImage}/>
+
+          {error && <Messages style={{ height: 30 }} message={error}/>}
+          {success && <Messages style={{ height: 30 }} type="success" message={success}/>}
+
+          {(!error && !success) &&
+          <Item style={{
+            height: 30,
+            borderBottomWidth: 0,
+            backgroundColor: 'transparent',
+          }}/>
+          }
+
+          <Item style={{
+            borderBottomWidth: 0,
+          }}>
+            <Text style={{
+              color: 'white',
+              textAlign: 'center',
+              width: '100%',
+              fontSize: Colors.fontSizeBase,
+              lineHeight: 22,
+            }}>
+              Having trouble with your password? {'\n'}
+              We will help you reset it!
+            </Text>
+          </Item>
+
+
+          <Item rounded={true} style={styles.input_item}>
+            <Input
+              style={styles.input}
+              placeholder='Type your email'
+              disabled={loading}
+              autoCapitalize="none"
+              keyboardType="email-address"
+              onChangeText={v => this.handleChange('email', v)}
+            />
+          </Item>
+
+
+          <Button
+            style={[styles.input_item, { backgroundColor: Colors.brandSuccessLight }]}
+            rounded block onPress={this.handleSubmit} disabled={loading}>
+            <Text uppercase={false}>{loading ? 'Loading' : 'Reset Password'}</Text>
+          </Button>
+
+          <Item style={{
+            borderBottomWidth: 0,
+            height: 20,
+            marginBottom: 150
+          }}/>
+
+        </View>
+      </ImageBackground>
     );
   }
 }
