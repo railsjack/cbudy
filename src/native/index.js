@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Platform } from 'react-native';
+import { StatusBar, Platform, Image } from 'react-native';
 import { Font } from 'expo';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
@@ -15,6 +15,8 @@ import Loading from './components/UI/Loading';
 
 // Hide StatusBar on Android as it overlaps tabs.
 if (Platform.OS === 'android') StatusBar.setHidden(true);
+
+const welcomeScreenBg = require('../images/main-bg.png');
 
 export default class App extends React.Component {
   static propTypes = {
@@ -43,6 +45,16 @@ export default class App extends React.Component {
     return (
       <Root>
         <Provider store={store}>
+          <Image
+            source={welcomeScreenBg}
+            style={{
+              flex: 1,
+              width: '100%',
+              height: '100%',
+              position: 'absolute',
+              top: 0,
+              zIndex: -1,
+            }}/>
           <PersistGate
             loading={<Loading />}
             persistor={persistor}

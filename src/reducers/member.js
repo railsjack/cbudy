@@ -22,6 +22,15 @@ export default function userReducer(state = {}, action) {
       }
       return {};
     }
+    case 'VERIFY_CODE': {
+      if (action.data) {
+        return {
+          ...state,
+          codeVerified: action.data.codeVerified
+        };
+      }
+      return {};
+    }
     case 'USER_RESET': {
       return {};
     }

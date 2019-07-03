@@ -15,7 +15,7 @@ class Login extends Component {
     error: null,
     success: null,
     loading: false,
-  }
+  };
 
   onFormSubmit = (data) => {
     const { onFormSubmit } = this.props;

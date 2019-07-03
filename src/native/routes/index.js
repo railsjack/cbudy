@@ -21,6 +21,9 @@ import ForgotPasswordComponent from '../components/User/ForgotPassword';
 import UpdateProfileContainer from '../../containers/UpdateProfile';
 import UpdateProfileComponent from '../components/User/UpdateProfile';
 
+import VerifyCodeContainer from '../../containers/VerifyCode';
+import VerifyCodeComponent from '../components/User/VerifyCode';
+
 import MemberContainer from '../../containers/Member';
 import ProfileComponent from '../components/User/Profile';
 
@@ -60,8 +63,17 @@ const Routes = (
           key="forgotPassword"
           title="FORGOT PASSWORD"
           {...DefaultProps.navbarProps}
-          component={ForgotPasswordContainer}
+          component={VerifyCodeContainer}
           Layout={ForgotPasswordComponent}
+        />
+        <Scene
+          initial={false}
+          hideNavBar
+          key="verifyCode"
+          title="Verify Code"
+          {...DefaultProps.navbarProps}
+          component={VerifyCodeContainer}
+          Layout={VerifyCodeComponent}
         />
       </Stack>
       <Tabs

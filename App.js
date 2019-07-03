@@ -1,9 +1,9 @@
-import React from 'react';
-import Root from './src/native/index';
-import configureStore from './src/store/index';
+/**
+ * @format
+ */
 
-const { persistor, store } = configureStore();
-console.disableYellowBox = true;
-export default function App() {
-  return <Root store={store} persistor={persistor} />;
-}
+import {AppRegistry} from 'react-native';
+import App from './src/Gallery';
+import {name as appName} from './app.json';
+
+AppRegistry.registerComponent(appName, () => App);

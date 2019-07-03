@@ -5,7 +5,7 @@ import Colors from '../../../native-base-theme/variables/commonColor';
 import { Actions } from 'react-native-router-flux';
 import Terms from '../components/UI/Terms';
 
-const welcomeScreenBg = require('../../images/main-bg.png');
+const welcomeScreenBg = require('../../images/main-bg-cut.png');
 const logoImage = require('../../images/logo.png');
 
 const deviceHeight = Dimensions.get('window').height;
@@ -20,6 +20,7 @@ const Welcome = () => (
         flex: 1,
         width: null,
         height: null,
+        resizeMode: 'repeat',
       }}>
       <Button
         transparent

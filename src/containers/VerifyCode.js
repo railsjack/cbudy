@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { signUp } from '../actions/member';
+import { resendCode, verifyCode } from '../actions/member';
+import { Actions } from 'react-native-router-flux';
 
-class SignUp extends Component {
+class VerifyCode extends Component {
   static propTypes = {
     Layout: PropTypes.func.isRequired,
     member: PropTypes.shape({}).isRequired,
@@ -18,24 +19,48 @@ class SignUp extends Component {
   };
 
   onFormSubmit = (data) => {
+
     const { onFormSubmit } = this.props;
 
     this.setState({ loading: true });
 
     return onFormSubmit(data)
-      .then(() => this.setState({
-        loading: false,
-        success: 'Success - Verify your email',
-        error: null,
-      }))
-      .catch((err) => {
+      .then(() => {
         this.setState({
           loading: false,
-          success: null,
-          error: err,
+          success: 'Success - Verified',
+          error: null,
         });
-        throw err; // To prevent transition back
-      });
+        setTimeout(() => {
+          Actions.verifyCode();
+        });
+      })
+      .catch(err => this.setState({
+        loading: false,
+        success: null,
+        error: err,
+      }));
+  };
+
+  onResendCode = (data) => {
+
+    const { onResendCode } = this.props;
+
+    this.setState({ loading: true });
+
+    return onResendCode(data)
+      .then(() => {
+        this.setState({
+          loading: false,
+          success: 'Success - Resent',
+          error: null,
+        });
+      })
+      .catch(err => this.setState({
+        loading: false,
+        success: null,
+        error: err,
+      }));
   };
 
   render = () => {
@@ -48,6 +73,7 @@ class SignUp extends Component {
         member={member}
         loading={loading}
         success={success}
+        onResendCode={this.onResendCode}
         onFormSubmit={this.onFormSubmit}
       />
     );
@@ -59,7 +85,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onFormSubmit: signUp,
+  onFormSubmit: verifyCode,
+  onResendCode: resendCode,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(VerifyCode);

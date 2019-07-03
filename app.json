@@ -1,4 +1,5 @@
 {
+  "name": "TestApp",
   "expo": {
     "name": "CBudyApp",
     "description": "This is an app for CBudy",

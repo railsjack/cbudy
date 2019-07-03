@@ -57,7 +57,7 @@ class SignUp extends React.Component {
     onFormSubmit(this.state)
       .then(() => setTimeout(() => {
         Actions.pop();
-        Actions.login();
+        Actions.verifyCode();
       }, 1000))
       .catch(() => {
       });

@@ -19,6 +19,9 @@ export const errorMessages = {
   missingPassword: 'Password is missing',
   passwordsDontMatch: 'Passwords do not match',
   notVerifiedEmail: 'Email is not verified',
+  missingVerifyCode: 'Missing Verify Code',
+  verificationFailed: 'Verification Failed',
+  codeNotverified: 'Code not verified',
 
   // Recipes
   recipe404: 'Recipe not found',
